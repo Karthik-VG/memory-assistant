@@ -1,5 +1,4 @@
 # importing mongodb file
-import ssl
 import pymongo
 import json
 import pandas as pd
