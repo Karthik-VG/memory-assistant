@@ -6,16 +6,14 @@ import sys
 
 
 class MongoDBOperation:
-    def __init__(self, user_name=None, password=None):
+    def __init__(self, atlas_url=None):
         try:
-            if user_name is None or password is None:
-                # creating initial object to fetch mongodb credentials
-                #credentials = get_mongo_db_credentials()  # return dictionary with user name and password
-                self.user_name = "user"
-                self.password = "user"
+            if atlas_url is not None:
+
+                self.atlas_url=atlas_url
+
             else:
-                self.user_name = user_name
-                self.password = password
+                return "Please provide the Atlas URL in the parameter"
 
         except Exception as e:
             return e
@@ -25,11 +23,12 @@ class MongoDBOperation:
         :return: mongo_db_url
         """
         try:
-            url = 'mongodb+srv://{0}:{1}@cluster0.ornbe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'.format(
-                self.user_name, self.password)
+            url = self.atlas_url
             return url
         except Exception as e:
             return e
+
+            
     def get_database_client_object(self):
         """
         Return pymongoClient object to perform action with MongoDB
