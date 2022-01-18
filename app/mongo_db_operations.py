@@ -25,7 +25,7 @@ class MongoDBOperation:
         :return: mongo_db_url
         """
         try:
-            url = 'mongodb+srv://{0}:{1}@cluster0.ornbe.mongodb.net/<dbname>?retryWrites=true&w=majority'.format(
+            url = 'mongodb+srv://{0}:{1}@cluster0.ornbe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'.format(
                 self.user_name, self.password)
             return url
         except Exception as e:
@@ -93,6 +93,8 @@ class MongoDBOperation:
                 return False
         except Exception as e:
             return e
+
+            
     def create_database(self, client, db_name):
         """
         client: client object of database
